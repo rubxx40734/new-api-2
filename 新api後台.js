@@ -41,7 +41,7 @@ function renderOrder(){
                 <td style="width: 18%;">${item.user.address}</td>
                 <td style="width: 18%;">${item.user.email}</td>
                 <td style="width: 18%; line-height: 1.2;" class="text-danger">${productStr}</td>
-                <td style="width: 10%;">${item.createdAt}</td>
+                <td style="width: 10%;">${getLocalTime(item.createdAt)}</td>
                 <td style="width: 8%;"><a href="#" data-id="${item.id}" class='link'>${paidStatus}</a></td>
                 <td style="width: 8%;"><input type="button" value="刪除" class="deleteSelf btn btn-danger btn-sm" data-id="${item.id}"></td>
             </tr>
@@ -158,3 +158,8 @@ function renderC3(){
         }
     });
 }
+//時間戳
+
+function getLocalTime(nS) {  
+    return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');  
+    }

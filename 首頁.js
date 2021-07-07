@@ -55,8 +55,8 @@ function renderProductList(){
                </div>
                <div class="info">
                  <p class="item">${item.title}</p>
-                 <p class="price">NT$ ${item.origin_price}</p>
-                 <p class="sell">NT$ ${item.price}</p>
+                 <p class="price">NT$ ${toCurrency(item.origin_price)}</p>
+                 <p class="sell">NT$ ${toCurrency(item.price)}</p>
                </div>
              </li>`
            })
@@ -122,15 +122,15 @@ function getCartsList(){
                   <p>${item.product.title}</p>
               </div>
           </th>
-          <td class="">NT$ ${item.product.price}</td>
+          <td class="">NT$ ${toCurrency(item.product.price)}</td>
           <td>${item.quantity}</td>
-          <td>NT$ ${(item.quantity)*(item.product.price)}</td>
+          <td>NT$ ${toCurrency((item.quantity)*(item.product.price))}</td>
           <td><input type="button" class="btn btn-danger" data-id="${item.id}" value="刪除"></td>
       </tr>`
         })
         myshoopingJs.innerHTML = str
         totalPrice.innerHTML = `<p>總金額</p>
-        <p>NT $ ${finalTotal}</p>`
+        <p>NT $ ${toCurrency(finalTotal)}</p>`
       })
 }
 
@@ -221,3 +221,9 @@ send.addEventListener('click',e=>{
   }
 
 })
+// 千分為
+function toCurrency(num){
+  var parts = num.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return parts.join('.');
+}
