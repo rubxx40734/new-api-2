@@ -108,7 +108,7 @@ productChoose.addEventListener('click',function(e){
 
 //取得購物車列表
 function getCartsList(){
-   axios.get('https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/bill60800/carts')
+   axios.get('https://livejs-api.hexschool.io/api/livejs/v1/customer/bill60800/carts')
       .then(function(res){
         console.log(res.data)
         finalTotal = res.data.finalTotal
