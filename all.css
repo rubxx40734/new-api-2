@@ -125,6 +125,12 @@ img{
 .advantage{
     margin-top: 50px;
 }
+.advantage img{
+    height: 140px;
+    width: 350px;
+    object-fit: cover;
+    object-position: center;
+}
 .advantage h3{
     text-align: center;
     font-size: 25px;
